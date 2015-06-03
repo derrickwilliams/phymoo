@@ -1,0 +1,56 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+
+    <button class="button button-block button-positive button-outline"
+      ng-click="vm.addEntry()">Add Entry</button>
+
+    <button class="button button-block button-positive button-outline">Records
+    </button>
+
+  </ion-content>
+</ion-view>
+
+<script id="add-entry-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">{{vm.today}}</h1>
+    </ion-header-bar>
+    <ion-content>
+      <h2>How Do You Feel?</h2>
+
+      <div class="button-bar">
+        <a class="button button-outline button-assertive"
+          ng-class="{ active: vm.isActive(0) }"
+          ng-click="vm.setActive(0)">Bad</a>
+
+        <a class="button button-outline button-energized"
+          ng-class="{ active: vm.isActive(1) }"
+          ng-click="vm.setActive(1)">Eh</a>
+
+        <a class="button button-outline button-balanced"
+          ng-class="{ active: vm.isActive(2) }"
+          ng-click="vm.setActive(2)">Good</a>
+      </div>
+
+      <h2>Symptoms</h2>
+
+      <button class="button button-light button-small"
+        ng-repeat="symptom in vm.symptoms"
+        ng-attr-id="{{symptom.id}}"
+        ng-click="vm.selectSymptom(symptom.id)">{{symptom.name}}</button>
+
+      <h2>Why?</h2>
+
+      <textarea></textarea>
+
+      <button class="button button-energized button-block button-outline"
+        ng-click="vm.hideModal()">Close</button>
+
+      <div ng-repeat="item in vm.symptoms" ng-if="$index%3==0" class="row">
+        <span ng-if="$index<vm.symptoms.length" style="float: left">{{vm.symptoms[$index].name}}</span>
+        <span ng-if="($index+1)<vm.symptoms.length" style="float: left">{{vm.symptoms[$index+1].name}}</span>
+        <span ng-if="($index+2)<vm.symptoms.length" style="float: left">{{vm.symptoms[$index+2].name}}</span>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

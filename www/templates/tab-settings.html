@@ -1,0 +1,15 @@
+<ion-view view-title="Settings">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="secondary">
+      <button class="button icon ion-ios-more button-clear button-dark"
+        ng-click="vm.doSomething('top')"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <button class="button button-clear button-assertive"
+      ng-click="vm.doSomething('bottom')">Clear Data</button>
+    <pre>{{vm.data}}</pre>
+  </ion-content>
+
+</ion-view>
